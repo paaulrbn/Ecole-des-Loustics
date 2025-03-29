@@ -1,12 +1,17 @@
 package fr.iut.ecoledesloustics;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     // VIEW
     private ListView listUsers;
     private Button button_continue_without_account;
+    private  Button button_add_user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +45,23 @@ public class MainActivity extends AppCompatActivity {
         // Récupérer les vues
         listUsers = findViewById(R.id.list_users);
         button_continue_without_account = findViewById(R.id.button_continue_without_account);
+        button_add_user = findViewById(R.id.button_add_user);
 
         // Lier l'adapter au listView
         adapter = new UsersAdapter(this, new ArrayList<User>());
         listUsers.setAdapter(adapter);
+
+        // ActivityResultLauncher pour le retour de l'ajout d'un utilisateur
+        ActivityResultLauncher<Intent> activityResultLauncher =
+                registerForActivityResult(
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>() {
+                            @Override
+                            public void onActivityResult(ActivityResult result) {
+                                if (result.getResultCode() == RESULT_OK) {
+                                    getUsers();
+                                }
+                            }});
 
         button_continue_without_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button_add_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
+                activityResultLauncher.launch(intent);
+            }
+        });
 
         getUsers();
     }

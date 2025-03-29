@@ -56,10 +56,6 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Léa\", \"Marchand\");");
             db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Hugo\", \"Perrin\");");
             db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Manon\", \"Lefèvre\");");
-            db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Thomas\", \"Garnier\");");
-            db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Camille\", \"Dubois\");");
-            db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Julien\", \"Lambert\");");
-            db.execSQL("INSERT INTO user (prenom, nom) VALUES(\"Chloé\", \"Martin\");");
         }
     };
 }

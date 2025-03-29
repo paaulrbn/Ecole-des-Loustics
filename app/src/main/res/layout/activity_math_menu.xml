@@ -8,16 +8,16 @@
     android:orientation="vertical"
     android:background="@color/blue"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".MainMathMenu">
 
     <Button
-        android:id="@+id/changeUserButton"
+        android:id="@+id/mathsBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/darkBlue"
         android:layout_marginTop="35dp"
         android:layout_gravity="start"
-        android:text="Changer D'utilisateur" />
+        android:text="Retour" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:text="Bonjour Utilisateur !"
+            android:text="Maths"
             android:textSize="20sp" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="Choisi une activité" />
+            android:text="Dans cette activité, tu vas devoir ..." />
 
         <TableLayout
             android:layout_width="wrap_content"
@@ -54,14 +54,14 @@
                 android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="20dp">
 
                     <ImageButton
                         android:id="@+id/imageButtonMath"
-                        android:src="@drawable/maths"
+                        android:src="@drawable/x"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/selectableItemBackground"
@@ -72,35 +72,14 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="20dp">
 
                     <ImageButton
                         android:id="@+id/imageButton2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                </androidx.cardview.widget.CardView>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageButton
-                        android:id="@+id/imageButtonChifoumi"
-                        android:src="@drawable/chifoumi"
+                        android:src="@drawable/plus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/selectableItemBackground"
@@ -110,13 +89,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="20dp">
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/imageButton3"
+                        android:src="@drawable/minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/selectableItemBackground"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/blue"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".AddUserActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textColor="@color/white"
+        android:text="Ajouter un utilisateur"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+
+    <EditText
+        android:id="@+id/editTextPrenom"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_height="48dp"
+        android:hint="Prenom" />
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Nom" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/darkBlue"
+        android:text="Ajouter"
+        android:textAllCaps="false"
+        app:cornerRadius="15dp"
+        tools:textSize="20sp" />
+
+</LinearLayout>

@@ -60,7 +60,7 @@
                     app:cardCornerRadius="20dp">
 
                     <ImageButton
-                        android:id="@+id/imageButtonMath"
+                        android:id="@+id/imageButtonMultiplication"
                         android:src="@drawable/x"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

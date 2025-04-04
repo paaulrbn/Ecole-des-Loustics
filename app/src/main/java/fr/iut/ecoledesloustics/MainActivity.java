@@ -1,12 +1,16 @@
 package fr.iut.ecoledesloustics;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     // VIEW
     private ListView listUsers;
-    private Button button_continue_without_account;
-    private  Button button_add_user;
+    private Button button_continue_without_account, button_add_user;
+    private TextView noUser;
 
 
     @Override
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         listUsers = findViewById(R.id.list_users);
         button_continue_without_account = findViewById(R.id.button_continue_without_account);
         button_add_user = findViewById(R.id.button_add_user);
+        noUser = findViewById(R.id.no_user);
 
         // Lier l'adapter au listView
         adapter = new UsersAdapter(this, new ArrayList<User>());
@@ -66,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         button_continue_without_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("UTILISATEUR_PRENOM", "");
+                editor.apply();
                 Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
                 startActivity(intent);
             }
@@ -78,6 +87,24 @@ public class MainActivity extends AppCompatActivity {
                 activityResultLauncher.launch(intent);
             }
         });
+
+        listUsers.setOnItemClickListener((new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Récupération de l'utilisateur cliqué à l'aide de l'adapter
+                User user = adapter.getItem(position);
+
+                // Stocker le prénom de l'utilisateur dans SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("UTILISATEUR_PRENOM", user.getPrenom());
+                editor.apply();
+
+                // Lancer l'activité de menu principal
+                Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
+                startActivity(intent);
+            }
+        }));
 
         getUsers();
     }
@@ -99,12 +126,19 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(List<User> tasks) {
                 super.onPostExecute(tasks);
 
-                // Mettre à jour l'adapter avec la liste de taches
+                // Mettre à jour l'adapter avec la liste de tâches
                 adapter.clear();
                 adapter.addAll(tasks);
-
-                // Now, notify the adapter of the change in source
                 adapter.notifyDataSetChanged();
+
+                // Gérer la visibilité des vues
+                if (tasks.isEmpty()) {
+                    listUsers.setVisibility(View.GONE);
+                    noUser.setVisibility(View.VISIBLE);
+                } else {
+                    listUsers.setVisibility(View.VISIBLE);
+                    noUser.setVisibility(View.GONE);
+                }
             }
         }
 

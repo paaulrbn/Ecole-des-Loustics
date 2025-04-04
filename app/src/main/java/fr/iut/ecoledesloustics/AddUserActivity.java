@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,9 +25,9 @@ public class AddUserActivity extends AppCompatActivity {
     private DatabaseClient mDb;
 
     // VIEW
-    private EditText editTextPrenom;
-    private EditText editTextNom;
+    private EditText editTextPrenom, editTextNom;
     private Button button_save;
+    private TextView retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,18 @@ public class AddUserActivity extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
+        // Récupérer les vues
         editTextPrenom = findViewById(R.id.editTextPrenom);
         editTextNom = findViewById(R.id.editTextNom);
         button_save = findViewById(R.id.button_save);
+        retour = findViewById(R.id.retour);
+
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +107,7 @@ public class AddUserActivity extends AppCompatActivity {
                 // Quand la tache est créée, on arrête l'activité AddTaskActivity (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
                 finish();
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Utilisateur ajouté", Toast.LENGTH_LONG).show();
             }
 
         }

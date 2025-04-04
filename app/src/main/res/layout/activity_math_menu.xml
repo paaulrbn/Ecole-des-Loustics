@@ -10,14 +10,32 @@
     android:padding="20dp"
     tools:context=".MainMathMenu">
 
-    <Button
-        android:id="@+id/mathsBackButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/darkBlue"
-        android:layout_marginTop="35dp"
-        android:layout_gravity="start"
-        android:text="Retour" />
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/mathsBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_gravity="start"
+            android:text="\u003C Retour" />
+
+        <TextView
+            android:id="@+id/utilisateur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:text="Invité(e)"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,25 +96,8 @@
                     app:cardCornerRadius="20dp">
 
                     <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/imageButtonAddition"
                         android:src="@drawable/plus"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageButton
-                        android:id="@+id/imageButton3"
-                        android:src="@drawable/minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/selectableItemBackground"

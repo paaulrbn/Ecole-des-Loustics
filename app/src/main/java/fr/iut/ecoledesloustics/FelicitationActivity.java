@@ -5,39 +5,39 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainMathMenu extends AppCompatActivity {
+public class FelicitationActivity extends AppCompatActivity {
 
-    private TextView mathsBackButton, utilisateur;
-    private ImageButton imageButtonMultiplication;
+    private Button exercice5_winAutreTableButton;
+    private TextView exercice5_mainMenuButton, utilisateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_math_menu);
+        setContentView(R.layout.activity_felicitation);
 
         // Récupérer les vues
-        mathsBackButton = findViewById(R.id.mathsBackButton);
-        imageButtonMultiplication = findViewById(R.id.imageButtonMultiplication);
+        exercice5_winAutreTableButton = findViewById(R.id.exercice5_winAutreTableButton);
+        exercice5_mainMenuButton = findViewById(R.id.exercice5_mainMenuButton);
         utilisateur = findViewById(R.id.utilisateur);
 
-        // Gérer le bouton retour
-        mathsBackButton.setOnClickListener(new View.OnClickListener() {
+        exercice5_winAutreTableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(FelicitationActivity.this, MultiplicationActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
-        // Gérer le bouton multiplication
-        imageButtonMultiplication.setOnClickListener(new View.OnClickListener() {
+        exercice5_mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMathMenu.this, MultiplicationActivity.class);
+                Intent intent = new Intent(FelicitationActivity.this, MainMenuActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

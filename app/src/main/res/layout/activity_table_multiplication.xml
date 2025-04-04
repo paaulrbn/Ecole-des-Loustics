@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/blue"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin"
+    tools:context=".TableMultiplicationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/multiplicationBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_gravity="start"
+            android:text="\u003C Retour" />
+
+        <TextView
+            android:id="@+id/utilisateur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:text="Invité(e)"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/exercice5_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" x 1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/exercice5_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 6"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 7"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 8"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 9"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            >
+
+            <TextView
+                android:id="@+id/exercice5_text10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 10"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/editTextNumber10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/exercice5_validerTable"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/darkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.579"
+        android:text="Valider" />
+</LinearLayout>

@@ -1,5 +1,6 @@
 package fr.iut.ecoledesloustics;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,20 +22,16 @@ public class ChifoumiActivity extends AppCompatActivity {
     private Jeu jeu;
     private Resultat resultat;
 
-    private Button chifoumiBackButton;
-    private TextView exercice3_textViewOrdinateur;
-    private TextView exercice3_textViewResultat;
-    private TextView exercice3_textViewVictoire;
-    private TextView exercice3_textViewDefaite;
-    private TextView exercice3_textViewEgalite;
+    private TextView chifoumiBackButton, exercice3_textViewOrdinateur, exercice3_textViewResultat,
+            exercice3_textViewVictoire, exercice3_textViewDefaite, exercice3_textViewEgalite,
+            utilisateur;
 
-    private ImageButton exercice3_imageButtonOrdinateurPapier;
-    private ImageButton exercice3_imageButtonOrdinateurCaillou;
-    private ImageButton exercice3_imageButtonOrdinateurCiseaux;
+    private ImageButton exercice3_imageButtonOrdinateurPapier,
+            exercice3_imageButtonOrdinateurCaillou,
+            exercice3_imageButtonOrdinateurCiseaux;
 
-    private ImageButton exercice3_imageButtonPapier;
-    private ImageButton exercice3_imageButtonCaillou;
-    private ImageButton exercice3_imageButtonCiseaux;
+    private ImageButton exercice3_imageButtonPapier, exercice3_imageButtonCaillou,
+            exercice3_imageButtonCiseaux;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +48,7 @@ public class ChifoumiActivity extends AppCompatActivity {
         exercice3_textViewDefaite = findViewById(R.id.exercice3_textViewDefaite);
         exercice3_textViewEgalite = findViewById(R.id.exercice3_textViewEgalite);
         chifoumiBackButton = findViewById(R.id.chifoumiBackButton);
+        utilisateur = findViewById(R.id.utilisateur);
 
         // Boutons de l'ordinateur (invisibles au début)
         exercice3_imageButtonOrdinateurPapier = findViewById(R.id.imageButtonPapier);
@@ -69,6 +67,9 @@ public class ChifoumiActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Affichage de l'utilisateur
+        afficheUtilisateur();
 
         // Gestion des clics des boutons utilisateur
         exercice3_imageButtonPapier.setOnClickListener(v -> jouer(Jeu.PAPIER));
@@ -126,5 +127,14 @@ public class ChifoumiActivity extends AppCompatActivity {
         exercice3_textViewVictoire.setText(String.valueOf(resultat.getNombreVictoire()));
         exercice3_textViewDefaite.setText(String.valueOf(resultat.getNombreDefaite()));
         exercice3_textViewEgalite.setText(String.valueOf(resultat.getNombreEgalite()));
+    }
+
+    public void afficheUtilisateur() {
+        SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+        String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");
+
+        if (prenom != null && !prenom.isEmpty()) {
+            utilisateur.setText(prenom);
+        }
     }
 }

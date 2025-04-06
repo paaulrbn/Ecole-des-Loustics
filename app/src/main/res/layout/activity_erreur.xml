@@ -18,11 +18,11 @@
 
         <TextView
             android:id="@+id/utilisateur"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_weight="1"
-            android:text="Invité(e)"
+            android:text="@string/invit_e"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:fontFamily="sans-serif-black"
-        android:text="Erreur(s) !"
+        android:text="@string/erreur_s"
         android:textSize="24sp"
         android:textColor="@color/white" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:gravity="center"
-        android:text="Nombre d'erreurs : 0" />
+        android:text="@string/nombre_d_erreurs_0" />
 
     <Space
         android:layout_width="match_parent"
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:backgroundTint="@color/darkBlue"
-        android:text="Corriger mes réponses"
+        android:text="@string/corriger_mes_r_ponses"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.579"
-        android:text="Choisir une autre table"/>
+        android:text="@string/choisir_une_autre_table"/>
 
 
 </LinearLayout>

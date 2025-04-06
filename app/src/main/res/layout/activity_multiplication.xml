@@ -25,15 +25,15 @@
             android:textColor="@color/darkBlue"
             android:textSize="18sp"
             android:layout_gravity="start"
-            android:text="\u003C Retour" />
+            android:text="@string/u003c_retour" />
 
         <TextView
             android:id="@+id/utilisateur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_weight="1"
-            android:text="Invité(e)"
+            android:text="@string/invit_e"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Choisi ta table de multiplication"
+            android:text="@string/choisi_ta_table_de_multiplication"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <NumberPicker
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.579"
-        android:text="Valider" />
+        android:text="@string/valider" />
 
 
 </LinearLayout>

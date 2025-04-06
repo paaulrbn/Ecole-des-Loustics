@@ -13,7 +13,7 @@
         android:id="@+id/textViewPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prenom"
+        android:text="@string/prenom"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -21,8 +21,8 @@
         android:id="@+id/textViewNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="Nom"
+        android:layout_marginStart="5dp"
+        android:text="@string/nom"
         android:textColor="@color/black"
         android:textSize="20sp" />
 </LinearLayout>

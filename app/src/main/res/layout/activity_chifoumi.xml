@@ -25,15 +25,15 @@
             android:layout_weight="1"
             android:textSize="18sp"
             android:layout_gravity="start"
-            android:text="\u003C Retour" />
+            android:text="@string/u003c_retour" />
 
         <TextView
             android:id="@+id/utilisateur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_weight="1"
-            android:text="Invité(e)"
+            android:text="@string/invit_e"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Main de l'ordinateur" />
+            android:text="@string/main_de_l_ordinateur" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -65,6 +65,7 @@
                 android:id="@+id/imageButtonPapier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/pierre"
                 android:layout_weight="1"
                 android:background="#FF0000"
                 android:padding="5dp"
@@ -75,6 +76,7 @@
                 android:id="@+id/imageButtonCailloux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/pierre"
                 android:layout_weight="1"
                 android:background="#FF0000"
                 android:padding="5dp"
@@ -85,6 +87,7 @@
                 android:id="@+id/imageButtonCiseaux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/ciseaux"
                 android:layout_weight="1"
                 android:background="#FF0000"
                 android:padding="5dp"
@@ -107,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Choisir une main" />
+            android:text="@string/choisir_une_main" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -119,6 +122,7 @@
                 android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/feuille"
                 android:layout_weight="1"
                 android:background="#000000"
                 android:padding="5dp"
@@ -128,6 +132,7 @@
                 android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/pierre"
                 android:layout_weight="1"
                 android:background="#000000"
                 android:padding="5dp"
@@ -137,6 +142,7 @@
                 android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/ciseaux"
                 android:layout_weight="1"
                 android:background="#000000"
                 android:padding="5dp"
@@ -165,14 +171,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre de victoires : " />
+                    android:text="@string/nombre_de_victoires" />
 
                 <TextView
                     android:id="@+id/exercice3_textViewVictoire"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -187,7 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre de défaites : " />
+                    android:text="@string/nombre_de_d_faites" />
 
                 <TextView
                     android:id="@+id/exercice3_textViewDefaite"
@@ -195,7 +201,7 @@
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="@string/_0" />
             </LinearLayout>
 
             <LinearLayout
@@ -209,7 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre d'égalités : " />
+                    android:text="@string/nombre_d_galit_s" />
 
                 <TextView
                     android:id="@+id/exercice3_textViewEgalite"
@@ -217,7 +223,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="@string/_0" />
             </LinearLayout>
 
         </LinearLayout>

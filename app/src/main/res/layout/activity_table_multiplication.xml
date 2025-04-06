@@ -24,15 +24,15 @@
             android:textColor="@color/darkBlue"
             android:textSize="18sp"
             android:layout_gravity="start"
-            android:text="\u003C Retour" />
+            android:text="@string/u003c_retour" />
 
         <TextView
             android:id="@+id/utilisateur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_weight="1"
-            android:text="Invité(e)"
+            android:text="@string/invit_e"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/exercice5_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" x 1"
+                android:text="@string/x_1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black" />
 
@@ -61,6 +61,7 @@
                 android:id="@+id/editTextNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@id/exercice5_text1"
                 android:textColor="@color/black"
                 android:ems="10"
                 android:inputType="number" />
@@ -76,7 +77,7 @@
                 android:id="@+id/exercice5_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 2"
+                android:text="@string/x_2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -93,13 +94,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
-            >
 
             <TextView
                 android:id="@+id/exercice5_text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 3"
+                android:text="@string/x_3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -122,7 +122,7 @@
                 android:id="@+id/exercice5_text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 4"
+                android:text="@string/x_4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -145,7 +145,7 @@
                 android:id="@+id/exercice5_text5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 5"
+                android:text="@string/x_5"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -168,7 +168,7 @@
                 android:id="@+id/exercice5_text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 6"
+                android:text="@string/x_6"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -191,7 +191,7 @@
                 android:id="@+id/exercice5_text7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 7"
+                android:text="@string/x_7"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -214,7 +214,7 @@
                 android:id="@+id/exercice5_text8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 8"
+                android:text="@string/x_8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -237,7 +237,7 @@
                 android:id="@+id/exercice5_text9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 9"
+                android:text="@string/x_9"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -260,7 +260,7 @@
                 android:id="@+id/exercice5_text10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x 10"
+                android:text="@string/x_10"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"/>
 
@@ -290,5 +290,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.579"
-        android:text="Valider" />
+        android:text="@string/valider" />
 </LinearLayout>

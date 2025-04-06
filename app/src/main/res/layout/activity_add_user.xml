@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textSize="18sp"
         android:layout_gravity="start"
-        android:text="\u003C Retour" />
+        android:text="@string/u003c_retour" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,23 +31,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:textColor="@color/white"
-            android:text="Ajouter un utilisateur"
+            android:text="@string/ajouter_un_utilisateur"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
 
         <EditText
             android:id="@+id/editTextPrenom"
             android:layout_width="match_parent"
+            android:inputType="text"
             android:textColor="@color/white"
             android:layout_height="48dp"
-            android:hint="Prenom" />
+            android:hint="@string/prenom" />
 
         <EditText
             android:id="@+id/editTextNom"
             android:textColor="@color/white"
             android:layout_width="match_parent"
+            android:inputType="text"
             android:layout_height="48dp"
-            android:hint="Nom" />
+            android:hint="@string/nom" />
 
         <Button
             android:id="@+id/button_save"
@@ -56,7 +58,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:backgroundTint="@color/darkBlue"
-            android:text="Ajouter"
+            android:text="@string/ajouter"
             android:textAllCaps="false"
             app:cornerRadius="15dp"
             tools:textSize="20sp" />

@@ -23,15 +23,15 @@
             android:textColor="@color/darkBlue"
             android:textSize="18sp"
             android:layout_gravity="start"
-            android:text="\u003C Retour" />
+            android:text="@string/u003c_retour" />
 
         <TextView
             android:id="@+id/utilisateur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_weight="1"
-            android:text="Invité(e)"
+            android:text="@string/invit_e"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -47,10 +47,11 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:text="Maths"
+            android:text="@string/maths"
             android:textSize="20sp" />
 
         <TextView
@@ -60,54 +61,68 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="Dans cette activité, tu vas devoir ..." />
+            android:text="@string/explication_maths" />
 
-        <TableLayout
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/explication_multiplication"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/explication_addition"/>
+
+
+        <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_gravity="center">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="20dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp">
+                <ImageButton
+                    android:id="@+id/imageButtonMultiplication"
+                    android:src="@drawable/x"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/multiplication"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                    <ImageButton
-                        android:id="@+id/imageButtonMultiplication"
-                        android:src="@drawable/x"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="20dp">
 
-                    <ImageButton
-                        android:id="@+id/imageButtonAddition"
-                        android:src="@drawable/plus"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackground"
-                        android:scaleType="centerCrop"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                <ImageButton
+                    android:id="@+id/imageButtonAddition"
+                    android:src="@drawable/plus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/addition"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            </TableRow>
+        </TableRow>
 
-        </TableLayout>
     </LinearLayout>
 </LinearLayout>

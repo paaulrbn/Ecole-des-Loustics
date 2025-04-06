@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainMathMenu extends AppCompatActivity {
 
     private TextView mathsBackButton, utilisateur;
-    private ImageButton imageButtonMultiplication;
+    private ImageButton imageButtonMultiplication, imageButtonAddition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainMathMenu extends AppCompatActivity {
         // Récupérer les vues
         mathsBackButton = findViewById(R.id.mathsBackButton);
         imageButtonMultiplication = findViewById(R.id.imageButtonMultiplication);
+        imageButtonAddition = findViewById(R.id.imageButtonAddition);
         utilisateur = findViewById(R.id.utilisateur);
 
         // Gérer le bouton retour
@@ -38,6 +39,15 @@ public class MainMathMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMathMenu.this, MultiplicationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Gérer le bouton addition
+        imageButtonAddition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMathMenu.this, AdditionActivity.class);
                 startActivity(intent);
             }
         });

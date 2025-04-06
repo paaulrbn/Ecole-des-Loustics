@@ -3,7 +3,7 @@
     <string name="u003c_retour"><![CDATA[< Retour]]></string>
     <string name="invit_e">Invité(e)</string>
     <string name="maths">Maths</string>
-    <string name="explication_maths">Dans cette activité, tu vas devoir résoudre des opérations. Choisis un jeu et teste tes compétences !</string>
+    <string name="explication_maths">Dans cette activité, tu vas devoir résoudre des opérations.</string>
     <string name="explication_multiplication">Multiplication : Choisis une table entre 1 et 10, réponds à toutes les questions, puis corrige tes erreurs si besoin.</string>
     <string name="explication_addition">Addition : Tu devras résoudre 10 additions simples, une par une.</string>
     <string name="multiplication">Multiplication</string>
@@ -51,4 +51,5 @@
     <string name="culture_g_n_rale">Culture générale</string>
     <string name="chifoumi">Chifoumi</string>
     <string name="choisis_une_activit">Choisis une activité</string>
+    <string name="commencer">Commencer</string>
 </resources>

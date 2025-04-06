@@ -15,12 +15,9 @@ import fr.iut.ecoledesloustics.db.User;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    User user;
-
     // VIEW
     private TextView changeUserButton, accueilText;
-    private ImageButton imageButtonMath;
-    private ImageButton imageButtonChifoumi;
+    private ImageButton imageButtonMultiplication, imageButtonAddition, imageButtonChifoumi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +26,12 @@ public class MainMenuActivity extends AppCompatActivity {
 
         // Récupérer les vues
         changeUserButton = findViewById(R.id.changeUserButton);
-        imageButtonMath = findViewById(R.id.imageButtonMath);
+        imageButtonMultiplication = findViewById(R.id.imageButtonMultiplication);
+        imageButtonAddition = findViewById(R.id.imageButtonAddition);
         imageButtonChifoumi = findViewById(R.id.imageButtonChifoumi);
         accueilText = findViewById(R.id.accueilText);
 
+        // Gérer le bouton pour changer d'utilisateur
         changeUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,14 +39,25 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        imageButtonMath.setOnClickListener(new View.OnClickListener() {
+        // Gérer le bouton pour accéder au menu de multiplication
+        imageButtonMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, MainMathMenu.class);
+                Intent intent = new Intent(MainMenuActivity.this, MultiplicationMenuActivity.class);
                 startActivity(intent);
             }
         });
 
+        // Gérer le bouton pour accéder au menu d'addition
+        imageButtonAddition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenuActivity.this, AdditionMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Gérer le bouton pour accéder au jeu de Chifoumi
         imageButtonChifoumi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/blue"
     android:padding="20dp"
-    tools:context=".MainMathMenu">
+    tools:context=".MultiplicationMenuActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <TextView
-            android:id="@+id/mathsBackButton"
+            android:id="@+id/additionMenuBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,7 +51,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:text="@string/maths"
+            android:text="@string/multiplication"
             android:textSize="20sp" />
 
         <TextView
@@ -71,58 +71,18 @@
             android:gravity="center"
             android:text="@string/explication_multiplication"/>
 
-        <TextView
+        <Button
+            android:id="@+id/commencerMultiplication"
             android:layout_width="match_parent"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:text="@string/explication_addition"/>
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/darkBlue"
+            android:text="@string/commencer"
+            android:textAllCaps="false"
+            app:cornerRadius="15dp"
+            tools:textSize="20sp" />
 
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="20dp">
-
-                <ImageButton
-                    android:id="@+id/imageButtonMultiplication"
-                    android:src="@drawable/x"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/multiplication"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="20dp">
-
-                <ImageButton
-                    android:id="@+id/imageButtonAddition"
-                    android:src="@drawable/plus"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/addition"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            </androidx.cardview.widget.CardView>
-
-        </TableRow>
 
     </LinearLayout>
 </LinearLayout>

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.EcoleDesLoustics"
         tools:targetApi="31">
         <activity
+            android:name=".AdditionMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MultiplicationMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdditionActivity"
             android:exported="false" />
         <activity
@@ -32,9 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".AddUserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainMathMenu"
             android:exported="false" />
         <activity
             android:name=".MainMenuActivity"

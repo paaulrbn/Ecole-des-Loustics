@@ -25,7 +25,7 @@ public class DatabaseClient {
 
         ////////// REMPLIR LA BD à la première création à l'aide de l'objet roomDatabaseCallback
         // Ajout de la méthode addCallback permettant de populate (remplir) la base de données à sa création
-        appDatabase = Room.databaseBuilder(context, AppDatabase.class, "EcoleDesLoustics").addCallback(roomDatabaseCallback).build();
+        appDatabase = Room.databaseBuilder(context, AppDatabase.class, "ecoledesloustics").fallbackToDestructiveMigration().addCallback(roomDatabaseCallback).build();
     }
 
     // Méthode statique
@@ -49,6 +49,18 @@ public class DatabaseClient {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+
+            // Insertion des données par défaut dans la base
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quelle est la forme correcte du verbe ''être'' à la première personne du singulier au présent ?', 'Suis', 'Es', 'Est', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le contraire de ''heureux'' ?', 'Triste', 'Content', 'Joyeux', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est l''antonyme de ''grand'' ?', 'Petit', 'Minuscule', 'Énorme', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Comment se conjugue ''avoir'' à la troisième personne du singulier au présent ?', 'A', 'Avoir', 'Ai', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le féminin de ''acteur'' ?', 'Actrice', 'Acteur', 'Acteuse', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Que signifie le mot ''égard'' ?', 'Respect', 'Discrétion', 'Mépris', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le synonyme de ''intelligent'' ?', 'Astucieux', 'Bête', 'Débile', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Comment conjuguer le verbe ''manger'' à la première personne du pluriel au présent ?', 'Mangeons', 'Mangeait', 'Mangé', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le contraire de ''chaud'' ?', 'Froid', 'Tiède', 'Piquant', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Que veut dire le mot ''plutôt'' ?', 'Sauf', 'Avant', 'Aussi', 0);");
         }
     };
 }

@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(List<User> tasks) {
                 super.onPostExecute(tasks);
 
-                // Mettre à jour l'adapter avec la liste de tâches
+                // Mettre à jour l'adapter avec la liste des utilisateurs
                 adapter.clear();
                 adapter.addAll(tasks);
                 adapter.notifyDataSetChanged();

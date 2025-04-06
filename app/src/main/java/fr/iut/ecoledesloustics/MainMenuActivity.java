@@ -17,7 +17,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     // VIEW
     private TextView changeUserButton, accueilText;
-    private ImageButton imageButtonMultiplication, imageButtonAddition, imageButtonChifoumi;
+    private ImageButton imageButtonMultiplication, imageButtonAddition, imageButtonChifoumi,
+            imageButtonCultureGenerale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainMenuActivity extends AppCompatActivity {
         imageButtonMultiplication = findViewById(R.id.imageButtonMultiplication);
         imageButtonAddition = findViewById(R.id.imageButtonAddition);
         imageButtonChifoumi = findViewById(R.id.imageButtonChifoumi);
+        imageButtonCultureGenerale = findViewById(R.id.imageButtonCultureGenerale);
         accueilText = findViewById(R.id.accueilText);
 
         // Gérer le bouton pour changer d'utilisateur
@@ -62,6 +64,15 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenuActivity.this, ChifoumiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Gérer le bouton pour accéder au menu de culture générale
+        imageButtonCultureGenerale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenuActivity.this, CultureGeneraleActivity.class);
                 startActivity(intent);
             }
         });

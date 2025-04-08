@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/blue"
+    android:padding="20dp"
+    tools:context=".CultureGeneraleMenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/cultureGeneraleMenuBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_gravity="start"
+            android:text="@string/u003c_retour" />
+
+        <TextView
+            android:id="@+id/utilisateur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_weight="1"
+            android:text="@string/invit_e"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/culture_g_n_rale"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginBottom="20dp"
+            android:gravity="start"
+            android:text="Réponds correctement à 10 questions de culture générale !\nLis bien les propositions, certaines peuvent être piégeuses...\nUne seule bonne réponse par question.\nBonne chance !"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/commencerCultureGeneraleButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/darkBlue"
+            android:text="@string/commencer"
+            android:textAllCaps="false"
+            app:cornerRadius="15dp"
+            tools:textSize="20sp" />
+
+    </LinearLayout>
+</LinearLayout>

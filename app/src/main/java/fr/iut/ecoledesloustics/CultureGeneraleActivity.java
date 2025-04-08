@@ -33,7 +33,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     private int correctAnswers = 0;
 
     // VIEW
-    private TextView questionTextView, utilisateur, cultureGeneraleMenuBackButton, questionCounterTextView;
+    private TextView questionTextView, utilisateur, cultureGeneraleBackButton, questionCounterTextView;
     private RadioGroup radioGroup;
     private RadioButton reponse1, reponse2, reponse3;
     private Button suivantButton;
@@ -47,7 +47,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "ecoledesloustics").build();
 
         // Récupérer les vues
-        cultureGeneraleMenuBackButton = findViewById(R.id.cultureGeneraleMenuBackButton);
+        cultureGeneraleBackButton = findViewById(R.id.cultureGeneraleBackButton);
         utilisateur = findViewById(R.id.utilisateur);
         questionTextView = findViewById(R.id.questionTextView);
         questionCounterTextView = findViewById(R.id.questionCounterTextView);
@@ -57,7 +57,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         reponse3 = findViewById(R.id.reponse3);
         suivantButton = findViewById(R.id.suivantButton);
 
-        cultureGeneraleMenuBackButton.setOnClickListener(new View.OnClickListener() {
+        cultureGeneraleBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

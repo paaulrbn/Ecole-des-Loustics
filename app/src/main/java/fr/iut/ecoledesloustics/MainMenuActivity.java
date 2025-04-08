@@ -72,7 +72,7 @@ public class MainMenuActivity extends AppCompatActivity {
         imageButtonCultureGenerale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, CultureGeneraleActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, CultureGeneraleMenuActivity.class);
                 startActivity(intent);
             }
         });

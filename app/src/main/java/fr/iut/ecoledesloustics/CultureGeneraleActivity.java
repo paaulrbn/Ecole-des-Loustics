@@ -1,5 +1,6 @@
 package fr.iut.ecoledesloustics;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,24 +9,31 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import fr.iut.ecoledesloustics.db.AppDatabase;
+import fr.iut.ecoledesloustics.db.DatabaseClient;
 import fr.iut.ecoledesloustics.db.Question;
+import fr.iut.ecoledesloustics.db.User;
 
 public class CultureGeneraleActivity extends AppCompatActivity {
 
+    // DATA
     private AppDatabase db;
     private List<Question> questions;
     private int currentQuestionIndex = 0;
     private int correctAnswers = 0;
 
-    private TextView questionTextView;
+    // VIEW
+    private TextView questionTextView, utilisateur, cultureGeneraleMenuBackButton, questionCounterTextView;
     private RadioGroup radioGroup;
     private RadioButton reponse1, reponse2, reponse3;
     private Button suivantButton;
@@ -35,18 +43,35 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_culture_generale);
 
+        // Récupération du AppDatabase
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "ecoledesloustics").build();
 
+        // Récupérer les vues
+        cultureGeneraleMenuBackButton = findViewById(R.id.cultureGeneraleMenuBackButton);
+        utilisateur = findViewById(R.id.utilisateur);
         questionTextView = findViewById(R.id.questionTextView);
+        questionCounterTextView = findViewById(R.id.questionCounterTextView);
         radioGroup = findViewById(R.id.radioGroup);
         reponse1 = findViewById(R.id.reponse1);
         reponse2 = findViewById(R.id.reponse2);
         reponse3 = findViewById(R.id.reponse3);
         suivantButton = findViewById(R.id.suivantButton);
 
+        cultureGeneraleMenuBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         suivantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                if (selectedId == -1) {
+                    Toast.makeText(CultureGeneraleActivity.this, "Veuillez sélectionner une réponse", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 checkAnswer();
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.size()) {
@@ -57,25 +82,38 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             }
         });
 
-        new GetQuestionsTask().execute();
-        new InsertDefaultQuestionsTask().execute();
+        afficheUtilisateur();
+        getQuestions();
+
+    }
+
+    public void afficheUtilisateur() {
+        SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+        String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");
+
+        if (prenom != null && !prenom.isEmpty()) {
+            utilisateur.setText(prenom);
+        }
     }
 
     private void displayQuestion(Question question) {
         Log.d("CultureGeneraleActivity", "Displaying question: " + question.getTexteQuestion());
         questionTextView.setText(question.getTexteQuestion());
-        reponse1.setText(question.reponse1);
-        reponse2.setText(question.reponse2);
-        reponse3.setText(question.reponse3);
+        List<String> reponses = Arrays.asList(question.reponse1, question.reponse2, question.reponse3);
+        Collections.shuffle(reponses);
+        reponse1.setText(reponses.get(0));
+        reponse2.setText(reponses.get(1));
+        reponse3.setText(reponses.get(2));
         radioGroup.clearCheck();
+        questionCounterTextView.setText("Question " + (currentQuestionIndex + 1) + "/" + questions.size());
     }
 
     private void checkAnswer() {
         int selectedId = radioGroup.getCheckedRadioButtonId();
         if (selectedId != -1) {
             RadioButton selectedRadioButton = findViewById(selectedId);
-            int selectedIndex = radioGroup.indexOfChild(selectedRadioButton);
-            if (selectedIndex == questions.get(currentQuestionIndex).bonneReponseIndex) {
+            String bonneReponse = questions.get(currentQuestionIndex).bonneReponse;
+            if (selectedRadioButton.getText().toString().equals(bonneReponse)) {
                 correctAnswers++;
             }
         }
@@ -85,38 +123,25 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Résultat")
                 .setMessage("Vous avez " + correctAnswers + " bonnes réponses sur " + questions.size())
-                .setPositiveButton("OK", null)
+                .setPositiveButton("OK", (dialog, which) -> finish())
                 .show();
     }
 
-    private class GetQuestionsTask extends AsyncTask<Void, Void, List<Question>> {
-        @Override
-        protected List<Question> doInBackground(Void... voids) {
-            return db.questionDao().get10QuestionsAleatoires();
-        }
+    private void getQuestions() {
+        new Thread(() -> {
+            questions = DatabaseClient.getInstance(getApplicationContext())
+                    .getAppDatabase()
+                    .questionDao()
+                    .get10QuestionsAleatoires();
 
-        @Override
-        protected void onPostExecute(List<Question> result) {
-            questions = result;
-            if (!questions.isEmpty()) {
-                displayQuestion(questions.get(0));
-            } else {
-                Log.d("CultureGeneraleActivity", "No questions found in the database.");
-            }
-        }
-    }
-
-    private class InsertDefaultQuestionsTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            if (db.questionDao().get10QuestionsAleatoires().isEmpty()) {
-                db.questionDao().inserer(
-                    new Question("Quelle est la capitale de la France?", "Paris", "Londres", "Berlin", 0),
-                    new Question("Combien de continents y a-t-il sur Terre?", "5", "6", "7", 2),
-                    new Question("Quelle est la plus grande planète du système solaire?", "Terre", "Jupiter", "Mars", 1)
-                );
-            }
-            return null;
-        }
+            runOnUiThread(() -> {
+                if (questions.isEmpty()) {
+                    Toast.makeText(this, "Aucune question disponible", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    displayQuestion(questions.get(0));
+                }
+            });
+        }).start();
     }
 }

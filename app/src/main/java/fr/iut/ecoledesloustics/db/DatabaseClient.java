@@ -17,14 +17,6 @@ public class DatabaseClient {
 
     // Constructeur
     private DatabaseClient(final Context context) {
-
-        // Créer l'objet représentant la base de données de votre application
-        // à l'aide du "Room database builder"
-        // MyToDos est le nom de la base de données
-        //appDatabase = Room.databaseBuilder(context, AppDatabase.class, "MyToDos").build();
-
-        ////////// REMPLIR LA BD à la première création à l'aide de l'objet roomDatabaseCallback
-        // Ajout de la méthode addCallback permettant de populate (remplir) la base de données à sa création
         appDatabase = Room.databaseBuilder(context, AppDatabase.class, "ecoledesloustics").fallbackToDestructiveMigration().addCallback(roomDatabaseCallback).build();
     }
 
@@ -51,17 +43,27 @@ public class DatabaseClient {
             super.onCreate(db);
 
             // Insertion des données par défaut dans la base
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quelle est la forme correcte du verbe ''être'' à la première personne du singulier au présent ?', 'Suis', 'Es', 'Est', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le contraire de ''heureux'' ?', 'Triste', 'Content', 'Joyeux', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est l''antonyme de ''grand'' ?', 'Petit', 'Minuscule', 'Énorme', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Comment se conjugue ''avoir'' à la troisième personne du singulier au présent ?', 'A', 'Avoir', 'Ai', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le féminin de ''acteur'' ?', 'Actrice', 'Acteur', 'Acteuse', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Que signifie le mot ''égard'' ?', 'Respect', 'Discrétion', 'Mépris', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le synonyme de ''intelligent'' ?', 'Astucieux', 'Bête', 'Débile', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Comment conjuguer le verbe ''manger'' à la première personne du pluriel au présent ?', 'Mangeons', 'Mangeait', 'Mangé', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Quel est le contraire de ''chaud'' ?', 'Froid', 'Tiède', 'Piquant', 0);");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponseIndex) VALUES ('Que veut dire le mot ''plutôt'' ?', 'Sauf', 'Avant', 'Aussi', 0);");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quelle est la forme correcte du verbe ''être'' à la première personne du singulier au présent ?', 'Suis', 'Es', 'Est', 'Suis');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est l''antonyme de ''grand'' ?', 'Petit', 'Minuscule', 'Énorme', 'Petit');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Comment se conjugue ''avoir'' à la troisième personne du singulier au présent ?', 'A', 'Avoir', 'Ai', 'A');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Que signifie le mot ''égard'' ?', 'Respect', 'Discrétion', 'Mépris', 'Respect');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Comment conjuguer le verbe ''manger'' à la première personne du pluriel au présent ?', 'Mangeons', 'Mangeait', 'Mangé', 'Mangeons');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Combien de côtés a un triangle ?', '3', '4', '5', '3');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est l''infinitif du verbe ''chantait'' ?', 'Chanter', 'Chanté', 'Chante', 'Chanter');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Combien font 6 x 4 ?', '24', '20', '26', '24');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le féminin de ''boulanger'' ?', 'Boulangère', 'Boulangèreuse', 'Boulangeuse', 'Boulangère');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Dans quelle saison tombe le mois de décembre ?', 'Printemps', 'Hiver', 'Automne', 'Hiver');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le nom du président de la France en 2024 ?', 'Macron', 'Sarkozy', 'Hollande', 'Macron');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quelle est la capitale de l''Espagne ?', 'Madrid', 'Barcelone', 'Lisbonne', 'Madrid');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Comment appelle-t-on un mot qui a le même sens qu’un autre ?', 'Synonyme', 'Antonyme', 'Adjectif', 'Synonyme');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le résultat de 100 - 37 ?', '63', '67', '73', '63');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est l’adverbe dans la phrase : ''Il court vite'' ?', 'Il', 'Court', 'Vite', 'Vite');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quelle planète est la plus proche du Soleil ?', 'Terre', 'Mars', 'Mercure', 'Mercure');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Comment s’appelle le cri du chien ?', 'Miauler', 'Aboyer', 'Bêler', 'Aboyer');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Combien y a-t-il de zéros dans cent mille ?', '4', '5', '6', '5');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le pluriel de ''cheval'' ?', 'Chevals', 'Chevaux', 'Chevalles', 'Chevaux');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le résultat de 45 divisé par 5 ?', '8', '9', '10', '9');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le contraire de ''heureux'' ?', 'Triste', 'Content', 'Joyeux', 'Triste');");
         }
     };
 }
-

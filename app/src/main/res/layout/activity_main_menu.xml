@@ -124,6 +124,7 @@
                         android:id="@+id/imageButtonCultureGenerale"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:contentDescription="@string/culture_g_n_rale"
                         android:background="?attr/selectableItemBackground"
                         android:scaleType="centerCrop"
                         tools:srcCompat="@tools:sample/backgrounds/scenic" />

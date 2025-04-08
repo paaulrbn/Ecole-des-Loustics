@@ -13,14 +13,16 @@ public class Question {
     public String reponse1;
     public String reponse2;
     public String reponse3;
-    public int bonneReponseIndex; // 0, 1 ou 2
+    public String bonneReponse; // 0, 1 ou 2
 
-    public Question(String texteQuestion, String reponse1, String reponse2, String reponse3, int bonneReponseIndex) {
+    public Question() {}
+
+    public Question(String texteQuestion, String reponse1, String reponse2, String reponse3, String bonneReponse) {
         this.texteQuestion = texteQuestion;
         this.reponse1 = reponse1;
         this.reponse2 = reponse2;
         this.reponse3 = reponse3;
-        this.bonneReponseIndex = bonneReponseIndex;
+        this.bonneReponse = bonneReponse;
     }
 
     public String getTexteQuestion() {

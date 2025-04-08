@@ -52,4 +52,10 @@
     <string name="chifoumi">Chifoumi</string>
     <string name="choisis_une_activit">Choisis une activité</string>
     <string name="commencer">Commencer</string>
+    <string name="r_ponds_correctement_10_questions_de_culture_g_n_rale_nlis_bien_les_propositions_certaines_peuvent_tre_pi_geuses_nune_seule_bonne_r_ponse_par_question_nbonne_chance">Réponds correctement à 10 questions de culture générale !\nLis bien les propositions, certaines peuvent être piégeuses...\nUne seule bonne réponse par question.\nBonne chance !</string>
+    <string name="question">Question</string>
+    <string name="r_ponse_2">Réponse 2</string>
+    <string name="r_ponse_3">Réponse 3</string>
+    <string name="suivant">Suivant</string>
+    <string name="r_ponse_1">Réponse 1</string>
 </resources>

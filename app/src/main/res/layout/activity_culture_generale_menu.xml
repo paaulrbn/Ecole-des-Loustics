@@ -60,7 +60,7 @@
             android:textColor="@color/white"
             android:layout_marginBottom="20dp"
             android:gravity="start"
-            android:text="Réponds correctement à 10 questions de culture générale !\nLis bien les propositions, certaines peuvent être piégeuses...\nUne seule bonne réponse par question.\nBonne chance !"
+            android:text="@string/r_ponds_correctement_10_questions_de_culture_g_n_rale_nlis_bien_les_propositions_certaines_peuvent_tre_pi_geuses_nune_seule_bonne_r_ponse_par_question_nbonne_chance"
             android:textSize="16sp"/>
 
         <Button

@@ -52,8 +52,7 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est l''infinitif du verbe ''chantait'' ?', 'Chanter', 'Chanté', 'Chante', 'Chanter');");
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Combien font 6 x 4 ?', '24', '20', '26', '24');");
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le féminin de ''boulanger'' ?', 'Boulangère', 'Boulangèreuse', 'Boulangeuse', 'Boulangère');");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Dans quelle saison tombe le mois de décembre ?', 'Printemps', 'Hiver', 'Automne', 'Hiver');");
-            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le nom du président de la France en 2024 ?', 'Macron', 'Sarkozy', 'Hollande', 'Macron');");
+            db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le nom du président de la France en 2025 ?', 'Macron', 'Sarkozy', 'Hollande', 'Macron');");
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quelle est la capitale de l''Espagne ?', 'Madrid', 'Barcelone', 'Lisbonne', 'Madrid');");
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Comment appelle-t-on un mot qui a le même sens qu’un autre ?', 'Synonyme', 'Antonyme', 'Adjectif', 'Synonyme');");
             db.execSQL("INSERT INTO question (texteQuestion, reponse1, reponse2, reponse3, bonneReponse) VALUES ('Quel est le résultat de 100 - 37 ?', '63', '67', '73', '63');");

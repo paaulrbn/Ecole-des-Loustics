@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Question 1/10"
+            android:text="@string/question_1_10"
             android:textSize="16sp"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="8dp"/>
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:textColor="@color/white"
             android:layout_height="wrap_content"
-            android:text="Question"
+            android:text="@string/question"
             android:textSize="18sp"
             android:padding="16dp"/>
 
@@ -71,21 +71,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="Réponse 1" />
+                android:text="@string/r_ponse_1" />
 
             <RadioButton
                 android:id="@+id/reponse2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="Réponse 2" />
+                android:text="@string/r_ponse_2" />
 
             <RadioButton
                 android:id="@+id/reponse3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="Réponse 3" />
+                android:text="@string/r_ponse_3" />
         </RadioGroup>
 
         <Button
@@ -95,7 +95,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:backgroundTint="@color/darkBlue"
-            android:text="Suivant"
+            android:text="@string/suivant"
             android:textAllCaps="false"
             app:cornerRadius="15dp"
             tools:textSize="20sp" />

@@ -7,6 +7,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+/**
+ * Classe qui fournit un accès centralisé à la base de données de l'application en utilisant Room.
+ * Elle permet de récupérer l'instance de la base de données et d'effectuer des opérations sur les entités.
+ */
 public class DatabaseClient {
 
     // Instance unique permettant de faire le lien avec la base de données
@@ -15,13 +19,19 @@ public class DatabaseClient {
     // Objet représentant la base de données de votre application
     private AppDatabase appDatabase;
 
-    // Constructeur
-    private DatabaseClient(final Context context) {
-        appDatabase = Room.databaseBuilder(context, AppDatabase.class, "ecoledesloustics").fallbackToDestructiveMigration().addCallback(roomDatabaseCallback).build();
+    /**
+     * Constructeur privé pour initialiser la base de données avec le contexte fourni.
+     * @param context Le contexte de l'application.
+     */
+    private DatabaseClient(Context context) {
+        appDatabase = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "ecoledesloustics").build();
     }
 
-    // Méthode statique
-    // Retourne l'instance de l'objet DatabaseClient
+    /**
+     * Méthode pour obtenir l'instance unique de DatabaseClient. Si l'instance n'existe pas, elle est créée.
+     * @param context Le contexte de l'application utilisé pour créer la base de données.
+     * @return L'instance unique de DatabaseClient.
+     */
     public static synchronized DatabaseClient getInstance(Context context) {
         if (instance == null) {
             instance = new DatabaseClient(context);
@@ -29,7 +39,10 @@ public class DatabaseClient {
         return instance;
     }
 
-    // Retourne l'objet représentant la base de données de votre application
+    /**
+     * Méthode pour obtenir l'instance de la base de données.
+     * @return L'instance de la base de données.
+     */
     public AppDatabase getAppDatabase() {
         return appDatabase;
     }

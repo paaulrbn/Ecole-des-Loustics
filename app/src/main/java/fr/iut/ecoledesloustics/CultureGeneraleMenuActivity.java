@@ -7,17 +7,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Activité permettant d'accéder au menu de culture générale de l'application.
+ * Elle permet de commencer un quiz de culture générale.
+ */
 public class CultureGeneraleMenuActivity extends AppCompatActivity {
 
+    // Vues
     private TextView utilisateur, cultureGeneraleMenuBackButton;
     private Button commencerCultureGeneraleButton;
 
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues et définit les écouteurs d'événements.
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +33,7 @@ public class CultureGeneraleMenuActivity extends AppCompatActivity {
         utilisateur = findViewById(R.id.utilisateur);
         commencerCultureGeneraleButton = findViewById(R.id.commencerCultureGeneraleButton);
 
-
+        // Gérer le clic sur le bouton pour revenir au menu précédent
         cultureGeneraleMenuBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +41,7 @@ public class CultureGeneraleMenuActivity extends AppCompatActivity {
             }
         });
 
+        // Gérer le clic sur le bouton pour commencer le quiz de culture générale
         commencerCultureGeneraleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,9 +50,13 @@ public class CultureGeneraleMenuActivity extends AppCompatActivity {
             }
         });
 
+        // Afficher le prénom de l'utilisateur
         afficheUtilisateur();
     }
 
+    /**
+     * Méthode pour afficher le prénom de l'utilisateur depuis les SharedPreferences.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");
@@ -55,5 +65,4 @@ public class CultureGeneraleMenuActivity extends AppCompatActivity {
             utilisateur.setText(prenom);
         }
     }
-
 }

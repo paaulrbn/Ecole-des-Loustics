@@ -7,17 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Activité représentant le menu de multiplication.
+ * Permet à l'utilisateur de démarrer un exercice de multiplication ou de revenir à l'activité précédente.
+ */
 public class MultiplicationMenuActivity extends AppCompatActivity {
 
     private TextView additionMenuBackButton, utilisateur;
     private Button commencerMultiplication;
 
+    /**
+     * Méthode appelée à la création de l'activité.
+     * Initialise les vues et configure les écouteurs pour les boutons.
+     *
+     * @param savedInstanceState L'état sauvegardé de l'activité, s'il existe.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +54,10 @@ public class MultiplicationMenuActivity extends AppCompatActivity {
         afficheUtilisateur();
     }
 
+    /**
+     * Affiche le prénom de l'utilisateur à partir des préférences partagées.
+     * Si le prénom est trouvé, il est affiché dans la vue utilisateur.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

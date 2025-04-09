@@ -22,20 +22,30 @@ import fr.iut.ecoledesloustics.db.DatabaseClient;
 import fr.iut.ecoledesloustics.db.Question;
 import fr.iut.ecoledesloustics.db.User;
 
+/**
+ * Activité qui gère le quiz de culture générale de l'application.
+ * Elle affiche une question à la fois et permet à l'utilisateur de sélectionner une réponse.
+ * À la fin du quiz, le score de l'utilisateur est mis à jour.
+ */
 public class CultureGeneraleActivity extends AppCompatActivity {
 
-    // DATA
+    // Données
     private AppDatabase db;
     private List<Question> questions;
     private int currentQuestionIndex = 0;
     private int correctAnswers = 0;
 
-    // VIEW
+    // Vues
     private TextView questionTextView, utilisateur, cultureGeneraleBackButton, questionCounterTextView;
     private RadioGroup radioGroup;
     private RadioButton reponse1, reponse2, reponse3;
     private Button suivantButton;
 
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues, récupère les questions
+     * et définit les écouteurs d'événements pour les interactions de l'utilisateur.
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +65,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         reponse3 = findViewById(R.id.reponse3);
         suivantButton = findViewById(R.id.suivantButton);
 
+        // Écouteur pour revenir au menu précédent
         cultureGeneraleBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +73,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             }
         });
 
+        // Écouteur pour le bouton suivant, vérifie la réponse et passe à la question suivante
         suivantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +92,16 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             }
         });
 
+        // Affichage de l'utilisateur actuel
         afficheUtilisateur();
-        getQuestions();
 
+        // Récupération des questions du quiz
+        getQuestions();
     }
 
+    /**
+     * Méthode pour afficher le prénom de l'utilisateur à partir des SharedPreferences.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");
@@ -94,6 +111,11 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Méthode pour afficher une question à partir de la liste de questions.
+     * Les réponses sont mélangées et affichées dans les boutons radio.
+     * @param question La question à afficher.
+     */
     private void displayQuestion(Question question) {
         questionTextView.setText(question.getTexteQuestion());
         List<String> reponses = Arrays.asList(question.reponse1, question.reponse2, question.reponse3);
@@ -105,6 +127,10 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         questionCounterTextView.setText("Question " + (currentQuestionIndex + 1) + "/" + questions.size());
     }
 
+    /**
+     * Méthode pour vérifier la réponse sélectionnée par l'utilisateur.
+     * Si la réponse est correcte, le score est incrémenté.
+     */
     private void checkAnswer() {
         int selectedId = radioGroup.getCheckedRadioButtonId();
         if (selectedId != -1) {
@@ -116,6 +142,9 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Méthode pour afficher le score final de l'utilisateur et mettre à jour son score dans les SharedPreferences et la base de données.
+     */
     private void showResult() {
         // Récupérer le score actuel de l'utilisateur
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
@@ -127,6 +156,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         editor.putInt("UTILISATEUR_SCORE", score);
         editor.apply();
 
+        // Mettre à jour le score dans la base de données
         new Thread(() -> {
             SharedPreferences prefs = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
             long id = prefs.getLong("UTILISATEUR_ID", -1);
@@ -139,7 +169,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             }
         }).start();
 
-        // Afficher le résultat
+        // Affichage du résultat dans une boîte de dialogue
         new AlertDialog.Builder(this)
                 .setTitle("Résultat")
                 .setMessage("Vous avez " + correctAnswers + " bonnes réponses sur " + questions.size())
@@ -147,6 +177,10 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Méthode pour récupérer les questions du quiz depuis la base de données.
+     * Les questions sont récupérées de manière asynchrone et affichées dans l'activité.
+     */
     private void getQuestions() {
         new Thread(() -> {
             questions = DatabaseClient.getInstance(getApplicationContext())

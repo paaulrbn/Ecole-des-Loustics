@@ -16,23 +16,36 @@ import fr.iut.ecoledesloustics.db.User;
 import fr.iut.ecoledesloustics.maths.additionData.Addition;
 import fr.iut.ecoledesloustics.maths.additionData.SerieAddition;
 
+/**
+ * Activité qui gère le jeu d'addition.
+ * L'utilisateur doit résoudre des exercices d'addition et soumettre ses réponses.
+ * À la fin du jeu, un score est affiché et mis à jour.
+ */
 public class AdditionActivity extends AppCompatActivity {
 
-    AppDatabase db;
+    // Données
+    private AppDatabase db;
 
+    // Vues
     private TextView questionText, progressText, additionBackButton, utilisateur;
     private EditText answerInput;
     private Button submitButton;
 
+    // Séries d'addition et index actuel
     private SerieAddition serie;
     private int currentIndex = 0;
 
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues, les séries d'addition
+     * et définit les écouteurs d'événements pour les interactions de l'utilisateur.
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
 
-        // Récupération du AppDatabase
+        // Récupération de la base de données
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "ecoledesloustics").build();
 
         additionBackButton = findViewById(R.id.additionBackButton);
@@ -45,6 +58,7 @@ public class AdditionActivity extends AppCompatActivity {
         serie = new SerieAddition(true);
         afficherQuestion();
 
+        // Bouton pour revenir à l'activité précédente
         additionBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +66,7 @@ public class AdditionActivity extends AppCompatActivity {
             }
         });
 
+        // Bouton pour soumettre la réponse et passer à la question suivante
         submitButton.setOnClickListener(v -> {
             String reponseStr = answerInput.getText().toString().trim();
             if (!reponseStr.isEmpty()) {
@@ -59,6 +74,7 @@ public class AdditionActivity extends AppCompatActivity {
                 serie.getAddition(currentIndex).setReponseUtilisateur(reponse);
                 currentIndex++;
 
+                // Vérifie si des questions restent à afficher ou si le jeu est terminé
                 if (currentIndex < serie.getNombreAdditions()) {
                     answerInput.setText("");
                     afficherQuestion();
@@ -71,12 +87,18 @@ public class AdditionActivity extends AppCompatActivity {
         afficheUtilisateur();
     }
 
+    /**
+     * Méthode pour afficher la question actuelle de la série d'additions.
+     */
     private void afficherQuestion() {
         Addition addition = serie.getAddition(currentIndex);
         questionText.setText(addition.toString());
         progressText.setText("Question " + (currentIndex + 1) + "/" + serie.getNombreAdditions());
     }
 
+    /**
+     * Méthode pour afficher le résultat final du jeu et mettre à jour le score.
+     */
     private void afficherResultat() {
         int score = serie.getNombreReponsesJustes();
         String message = "Tu as " + score + " bonnes réponses sur " + serie.getNombreAdditions() + " 💪";
@@ -104,6 +126,7 @@ public class AdditionActivity extends AppCompatActivity {
             }
         }).start();
 
+        // Affichage du résultat dans un dialogue
         new AlertDialog.Builder(this)
                 .setTitle("Résultat")
                 .setMessage(message)
@@ -112,6 +135,9 @@ public class AdditionActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Méthode pour afficher le prénom de l'utilisateur dans l'interface.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

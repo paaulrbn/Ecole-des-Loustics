@@ -3,20 +3,19 @@ package fr.iut.ecoledesloustics;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import fr.iut.ecoledesloustics.chifoumiData.Jeu;
 import fr.iut.ecoledesloustics.chifoumiData.Resultat;
 
-
+/**
+ * Activité représentant le jeu du Chifoumi.
+ * Permet à l'utilisateur de jouer contre l'ordinateur au jeu de pierre-papier-ciseaux.
+ * Affiche les choix des joueurs, le résultat de chaque partie et les scores.
+ */
 public class ChifoumiActivity extends AppCompatActivity {
 
     private Jeu jeu;
@@ -33,6 +32,13 @@ public class ChifoumiActivity extends AppCompatActivity {
     private ImageButton exercice3_imageButtonPapier, exercice3_imageButtonCaillou,
             exercice3_imageButtonCiseaux;
 
+    /**
+     * Méthode appelée à la création de l'activité.
+     * Initialise les vues et les objets nécessaires au jeu.
+     * Configure les boutons et les actions associées.
+     *
+     * @param savedInstanceState L'état sauvegardé de l'activité, s'il existe.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +83,13 @@ public class ChifoumiActivity extends AppCompatActivity {
         exercice3_imageButtonCiseaux.setOnClickListener(v -> jouer(Jeu.CISEAUX));
     }
 
+    /**
+     * Gère le déroulement du jeu lorsque l'utilisateur fait un choix.
+     * L'ordinateur fait également un choix, et le résultat est déterminé.
+     * Le score et l'affichage sont mis à jour.
+     *
+     * @param choixJoueur Le choix de l'utilisateur : Pierre, Papier ou Ciseaux.
+     */
     private void jouer(int choixJoueur) {
         jeu = new Jeu(); // Génération de la main de l'ordinateur
         jeu.setMainJoueur(choixJoueur);
@@ -129,6 +142,10 @@ public class ChifoumiActivity extends AppCompatActivity {
         exercice3_textViewEgalite.setText(String.valueOf(resultat.getNombreEgalite()));
     }
 
+    /**
+     * Affiche le prénom de l'utilisateur à partir des préférences partagées.
+     * Si le prénom est trouvé, il est affiché dans la vue utilisateur.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

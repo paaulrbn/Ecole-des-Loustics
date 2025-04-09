@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,15 +16,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import fr.iut.ecoledesloustics.db.User;
 
+/**
+ * Activité principale du menu de l'application. Elle permet de naviguer vers différents menus de jeux (multiplication, addition, etc.)
+ * et de gérer le changement d'utilisateur.
+ */
 public class MainMenuActivity extends AppCompatActivity {
 
-    // VIEW
+    // Vues
     private TextView changeUserButton, accueilText, score;
     private ImageButton imageButtonMultiplication, imageButtonAddition, imageButtonChifoumi,
             imageButtonCultureGenerale;
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
-
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues, définit les écouteurs d'événements
+     * et gère les retours d'activité.
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +105,10 @@ public class MainMenuActivity extends AppCompatActivity {
         acceuillirUtilisateur();
     }
 
+    /**
+     * Méthode pour afficher un message d'accueil à l'utilisateur et afficher son score.
+     * Elle récupère le prénom et le score de l'utilisateur depuis les SharedPreferences.
+     */
     public void acceuillirUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

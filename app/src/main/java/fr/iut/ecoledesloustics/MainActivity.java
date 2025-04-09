@@ -2,10 +2,8 @@ package fr.iut.ecoledesloustics;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,6 +22,10 @@ import java.util.List;
 import fr.iut.ecoledesloustics.db.DatabaseClient;
 import fr.iut.ecoledesloustics.db.User;
 
+/**
+ * Activité principale de l'application qui gère l'affichage des utilisateurs et l'ajout de nouveaux utilisateurs.
+ * Permet également de continuer sans compte ou de sélectionner un utilisateur existant.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_ADD = 0;
@@ -37,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
     private Button button_continue_without_account, button_add_user;
     private TextView noUser;
 
-
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues, configure l'adapter, et définit les écouteurs d'événements.
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }});
 
+        // Gérer le clic sur le bouton pour continuer sans compte
         button_continue_without_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Gérer le clic sur le bouton pour ajouter un utilisateur
         button_add_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Gérer la sélection d'un utilisateur dans la liste
         listUsers.setOnItemClickListener((new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -108,16 +116,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
 
+        // Récupérer et afficher la liste des utilisateurs
         getUsers();
     }
 
+    /**
+     * Méthode pour récupérer la liste des utilisateurs dans la base de données de manière asynchrone.
+     * Elle met ensuite à jour l'adapter de la ListView et la visibilité des éléments en fonction de la présence d'utilisateurs.
+     */
     private void getUsers() {
         ///////////////////////
-        // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
+        // Classe asynchrone permettant de récupérer des utilisateurs et de mettre à jour le listView de l'activité
         class GetUsers extends AsyncTask<Void, Void, List<User>> {
 
             @Override
             protected List<User> doInBackground(Void... voids) {
+                // Récupérer la liste des utilisateurs depuis la base de données
                 List<User> userList = mDb.getAppDatabase()
                         .userDao()
                         .getAll();
@@ -133,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.addAll(tasks);
                 adapter.notifyDataSetChanged();
 
-                // Gérer la visibilité des vues
+                // Gérer la visibilité des vues en fonction de la présence d'utilisateurs
                 if (tasks.isEmpty()) {
                     listUsers.setVisibility(View.GONE);
                     noUser.setVisibility(View.VISIBLE);

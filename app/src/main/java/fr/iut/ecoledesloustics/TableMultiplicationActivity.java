@@ -19,6 +19,10 @@ import androidx.room.Room;
 import fr.iut.ecoledesloustics.db.AppDatabase;
 import fr.iut.ecoledesloustics.db.User;
 
+/**
+ * Activité qui gère le jeu de la table de multiplication.
+ * L'utilisateur doit remplir les réponses aux exercices de multiplication, et le score est mis à jour en fonction du nombre d'erreurs.
+ */
 public class TableMultiplicationActivity extends AppCompatActivity {
 
     AppDatabase db;
@@ -30,6 +34,12 @@ public class TableMultiplicationActivity extends AppCompatActivity {
     private Button exercice5_validerTable;
     private TextView multiplicationBackButton, utilisateur;
 
+    /**
+     * Méthode appelée lors de la création de l'activité. Initialise les vues, les textes des exercices de multiplication
+     * et définit les écouteurs d'événements pour les interactions de l'utilisateur.
+     *
+     * @param savedInstanceState L'état précédemment sauvegardé de l'activité, ou null si aucune donnée n'a été sauvegardée.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,6 +175,9 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         afficheUtilisateur();
     }
 
+    /**
+     * Méthode pour afficher le prénom de l'utilisateur dans l'interface.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

@@ -9,11 +9,21 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Activité représentant l'écran de félicitations.
+ * Permet de féliciter l'utilisateur et de naviguer vers d'autres activités comme le menu principal ou un autre exercice.
+ */
 public class FelicitationActivity extends AppCompatActivity {
 
     private Button exercice5_winAutreTableButton;
     private TextView exercice5_mainMenuButton, utilisateur;
 
+    /**
+     * Méthode appelée à la création de l'activité.
+     * Initialise les vues et configure les actions des boutons pour permettre la navigation.
+     *
+     * @param savedInstanceState L'état sauvegardé de l'activité, s'il existe.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +34,7 @@ public class FelicitationActivity extends AppCompatActivity {
         exercice5_mainMenuButton = findViewById(R.id.exercice5_mainMenuButton);
         utilisateur = findViewById(R.id.utilisateur);
 
+        // Action pour le bouton "gagner autre table"
         exercice5_winAutreTableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +44,7 @@ public class FelicitationActivity extends AppCompatActivity {
             }
         });
 
+        // Action pour le bouton "menu principal"
         exercice5_mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,9 +54,14 @@ public class FelicitationActivity extends AppCompatActivity {
             }
         });
 
+        // Affiche l'utilisateur
         afficheUtilisateur();
     }
 
+    /**
+     * Affiche le prénom de l'utilisateur à partir des préférences partagées.
+     * Si le prénom est trouvé, il est affiché dans la vue utilisateur.
+     */
     public void afficheUtilisateur() {
         SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
         String prenom = sharedPreferences.getString("UTILISATEUR_PRENOM", "");

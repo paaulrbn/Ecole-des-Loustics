@@ -14,6 +14,9 @@ public interface UserDAO {
     @Query("SELECT * FROM user")
     List<User> getAll();
 
+    @Query("SELECT * FROM user WHERE id = :id")
+    User getById(long id);
+
     @Insert
     long insert(User user);
 

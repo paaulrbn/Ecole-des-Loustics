@@ -10,6 +10,7 @@ public class User {
     private long id;
     private String prenom;
     private String nom;
+    private int score;
 
 
     // Getters et Setters
@@ -24,6 +25,10 @@ public class User {
     public String getNom() {
         return nom;
     }
+
+    public int getScore() { return score; }
+
+    public void setScore(int score) { this.score = score; }
 
     public void setId(long id) {
         this.id = id;

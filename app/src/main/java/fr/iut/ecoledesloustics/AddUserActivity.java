@@ -86,6 +86,7 @@ public class AddUserActivity extends AppCompatActivity {
                 User user = new User();
                 user.setPrenom(sPrenom);
                 user.setNom(sNom);
+                user.setScore(0);
 
                 // adding to database
                 long id = mDb.getAppDatabase()

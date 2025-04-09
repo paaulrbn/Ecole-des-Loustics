@@ -1,9 +1,7 @@
 package fr.iut.ecoledesloustics;
 
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -97,7 +95,6 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     }
 
     private void displayQuestion(Question question) {
-        Log.d("CultureGeneraleActivity", "Displaying question: " + question.getTexteQuestion());
         questionTextView.setText(question.getTexteQuestion());
         List<String> reponses = Arrays.asList(question.reponse1, question.reponse2, question.reponse3);
         Collections.shuffle(reponses);
@@ -120,6 +117,29 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     }
 
     private void showResult() {
+        // Récupérer le score actuel de l'utilisateur
+        SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+        int score = sharedPreferences.getInt("UTILISATEUR_SCORE", 0);
+
+        // Stocker le nouveau score dans SharedPreferences
+        score += correctAnswers;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("UTILISATEUR_SCORE", score);
+        editor.apply();
+
+        new Thread(() -> {
+            SharedPreferences prefs = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
+            long id = prefs.getLong("UTILISATEUR_ID", -1);
+            if (id != -1) {
+                User user = db.userDao().getById(id);
+                if (user != null) {
+                    user.setScore(user.getScore() + correctAnswers);
+                    db.userDao().update(user);
+                }
+            }
+        }).start();
+
+        // Afficher le résultat
         new AlertDialog.Builder(this)
                 .setTitle("Résultat")
                 .setMessage("Vous avez " + correctAnswers + " bonnes réponses sur " + questions.size())

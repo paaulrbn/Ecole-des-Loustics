@@ -97,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
                 // Stocker le prénom de l'utilisateur dans SharedPreferences
                 SharedPreferences sharedPreferences = getSharedPreferences("EcoleDesLousticsPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putLong("UTILISATEUR_ID", user.getId());
                 editor.putString("UTILISATEUR_PRENOM", user.getPrenom());
+                editor.putInt("UTILISATEUR_SCORE", user.getScore());
                 editor.apply();
 
                 // Lancer l'activité de menu principal
